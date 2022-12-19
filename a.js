@@ -1,10 +1,11 @@
-document.getElementById("i").disabled=true;
+let i=document.getElementById("i");
+//i.disabled=true;
 const passwordChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '.', ',', ';', ':', '/', '?', '<', '>', '[', ']', '{', '}', '|', '~', '`'];
-
+var upassoword;
 function passwordGenerator(list) {
 let password="";
-const n = Math.floor(Math.random()*(6)+6);
-const a=shuffle(passwordChars).slice(0,n);
+const n = Math.floor(Math.random()*(4)+8);
+const a=shuffle(list).slice(0,n);
 for (let name of a) {
     password+=name;
 }
@@ -20,3 +21,28 @@ function shuffle(array) {
   return shuffled;
 }
 //shuffle function written by chatGPT
+
+b=document.getElementById("gen");
+b.addEventListener("click",function(){
+//upassoword=passwordGenerator(passwordChars);
+i.value=passwordGenerator(passwordChars);
+});
+
+
+d=document.getElementById("s");
+d.addEventListener("click",function(){
+i.setAttribute("type","text")
+});
+
+
+c=document.getElementById("c");
+c.addEventListener("click",function(){
+i.select();
+document.execCommand("copy");
+c.textContent = 'Done!';
+setTimeout(() => {
+    c.textContent = 'Ctrl+C';
+  }, 1000);
+    
+});
+
