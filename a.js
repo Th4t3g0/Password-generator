@@ -1,4 +1,5 @@
 let i=document.getElementById("i");
+let t=document.getElementsByTagName("label")[0];
 i.disabled=true;
 const passwordChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '.', ',', ';', ':', '/', '?', '<', '>', '[', ']', '{', '}', '|', '~', '`'];
 var upassoword;
@@ -24,13 +25,18 @@ function shuffle(array) {
 
 b=document.getElementById("gen");
 b.addEventListener("click",function(){
-
+t.innerHTML="";
 i.value=passwordGenerator(passwordChars);
 });
 
 
 d=document.getElementById("s");
 d.addEventListener("click",function(){
+
+if (i.value =="") {
+    t.innerHTML="Click Create to generate password";
+  }else{
+  
 if(d.textContent==="show"){
     i.setAttribute("type","text");
     d.textContent="hide";
@@ -39,23 +45,23 @@ if(d.textContent==="show"){
         i.setAttribute("type","password");
         d.textContent="show";
     }
-});
+}});
 
 c=document.getElementById("c");
 c.addEventListener("click",function(){
 
-
-  
+  if (i.value =="") {
+    t.innerHTML="Click Create to generate password";
+  }else{
 i.disabled=false;
 i.setAttribute("type","text");
 i.select();
 document.execCommand("copy");
 i.setAttribute("type","password");
 i.disabled=true;
-
 c.textContent = 'Done!';
 setTimeout(() => {
     c.textContent = 'Ctrl+C';
-  }, 1000);
-    
+  }, 1000); 
+  }   
 });
