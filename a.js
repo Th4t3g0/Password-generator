@@ -24,27 +24,38 @@ function shuffle(array) {
 
 b=document.getElementById("gen");
 b.addEventListener("click",function(){
-//upassoword=passwordGenerator(passwordChars);
+
 i.value=passwordGenerator(passwordChars);
 });
 
 
 d=document.getElementById("s");
 d.addEventListener("click",function(){
-i.setAttribute("type","text")
+if(d.textContent==="show"){
+    i.setAttribute("type","text");
+    d.textContent="hide";
+}
+    else{
+        i.setAttribute("type","password");
+        d.textContent="show";
+    }
 });
-
 
 c=document.getElementById("c");
 c.addEventListener("click",function(){
+
+
+  
 i.disabled=false;
+i.setAttribute("type","text");
 i.select();
 document.execCommand("copy");
+i.setAttribute("type","password");
 i.disabled=true;
+
 c.textContent = 'Done!';
 setTimeout(() => {
     c.textContent = 'Ctrl+C';
   }, 1000);
     
 });
-
